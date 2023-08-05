@@ -7,7 +7,6 @@ export const getDatas = async (req: Request, res: Response) => {
     let skip = (req.query.skip as any) || 0;
 
     const count = await dataModel.count();
-
     const { search } = req.query;
     let query = {};
     const rgx = (pattern: any) => new RegExp(`.*${pattern}.*`);
@@ -16,8 +15,7 @@ export const getDatas = async (req: Request, res: Response) => {
       query = {
         $or: [
           { title: { $regex: searchRgx, $options: "i" } },
-          { description: { $regex: searchRgx, $options: "i" } },
-          { brand: { $regex: searchRgx, $options: "i" } },
+          { desc: { $regex: searchRgx, $options: "i" } },
         ],
       };
     }
