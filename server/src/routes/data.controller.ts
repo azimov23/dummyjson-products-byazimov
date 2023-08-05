@@ -28,9 +28,9 @@ export const getDatas = async (req: Request, res: Response) => {
     );
     res.json({
       data,
-      total: count,
-      limit,
-      skip,
+      total: count.toString(),
+      limit: limit.toString(),
+      skip: skip.toString(),
     });
   } catch (error) {
     res.status(404).json({
